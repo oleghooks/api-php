@@ -1,0 +1,128 @@
+body{
+  margin: 0;
+  font-family: arial;
+  font-size: 15px;
+}
+header{
+  width: 100%;
+  height: 39px;
+  background: #3697eb;
+}
+header span{
+  padding: 7px;
+  margin: 4px;
+  position: relative;
+  display: block;
+  float: left;
+  background: #ffffffeb;
+  border-radius: 4px;
+  color: #1d72bb;
+  font-weight: bold;
+  margin-left: 0px;
+  border-radius: 0px 3px 3px 0px;
+}
+header span.title{
+  margin-right: 0px;
+  margin-left: 4px;
+  border-radius: 3px 0px 0px 3px;
+  background: #24649b;
+  color: white;
+}
+.rightSide{
+  width: calc(46% - 1px);
+  float: right;
+  height: calc(100% - 39px);
+}
+.leftSide{
+    width: 54%;
+    height: calc(100% - 39px);
+    border-right: 1px solid #bbb;
+    overflow-y: scroll;
+}
+
+.leftSideItem{
+padding: 6px 10px;
+    border-bottom: 1px solid #bbb;
+}
+.leftSideItemOk{
+  text-decoration: line-through;
+    opacity: 0.6;
+}
+.leftSideItemTitle{
+  font-weight: bold;
+}
+.leftSideItemDesc span, .leftSideItemTitle span.tel{
+  display: block;
+    float: right;
+    color: #898787;
+}
+.status{
+  position: relative;
+    padding: 3px 6px;
+    background: #ddd3d3;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 100;
+    margin-left: 5px;
+}
+.status_active{
+  background: #babda7;
+}
+.status_active_delivery{
+background: #efec9d;
+}
+.leftSideItemDesc span.status_negative{
+	background:red;
+	color: white;
+}
+.status_active_delivery_ok{
+  background: #9defb2;
+}
+.status_active_ok{
+  background: #1cd32a;
+}
+.leftSideItemDesc span.status_active_ok{
+  background: #1cd32a;
+  color: white;
+}
+.leftSideItemDesc .status{
+    position: static;
+    float: none;
+    width: fit-content;
+    margin: 4px 0px;
+	
+}
+.formAdd{padding: 10px;}
+.formAdd input[type=text]{
+  width: calc(50% - 2px);
+  padding: 4px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.formAdd textarea{
+  width: 100%;
+  font-family: arial;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  margin-bottom: 10px;
+}
+.formAdd select{
+  padding: 4px;
+border: 1px solid #bbb;
+}
+.formAdd button{
+  float: right;
+padding: 7px 18px;
+background: #3697eb;
+color: white;
+font-weight: bold;
+border: 0px;
+border-radius: 3px;
+opacity: 0.7;
+}
+.formAdd button:hover{
+  cursor: pointer;
+  opacity: 1;
+}

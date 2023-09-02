@@ -1,0 +1,34 @@
+table {
+    width: 800px;
+    margin: 10px auto;
+    border: 1px solid #bbb;
+    border-spacing: 0px;
+    border: 1px solid #eee;
+    table-layout: fixed;
+}
+table input[type=text]{
+    width: 50px;
+    padding: 0px;
+    border: 0px;
+    font-size: 15px;
+}
+table td,tr{
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    padding: 3px;
+    text-align: center;
+}
+td.title {
+    text-align: left;
+}
+table tbody tr:nth-child(odd){
+    background: #fff;
+}
+table tbody tr:nth-child(even){
+    background: #F7F7F7;
+}
+@media print {
+    .header-left-top, .a-right-bottom, .time-right-bottom {
+        display: none;
+    }
+}

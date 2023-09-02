@@ -1,0 +1,25 @@
+[TEMPLATE_BASIC]
+<head>
+	<script src='/src/jquery-3.7.0.min.js' type='text/javascript'></script>
+	
+	<script type='text/javascript'>
+		function start(){
+			for(var i = $('#i').val(); i < $('#b').val(); i++){
+				current_count = 3000 * i;
+				
+				
+				$.ajax({
+					url: '/index.php?module=api&a=relef&offset='+current_count,
+					success: function(response){
+						response = $.parseJSON(response);
+						$('#results').append("<div id='result_"+current_count+"'>Получение товаров "+current_count+".."+(current_count + 3000)+"	- Добавлено: "+response.count_ins+", Обновлено: "+response.count_upd+"</div>");
+					}
+				});
+			}
+		}
+	</script>
+
+</head>
+<button id='start' onclick="start();">Старт</button> <input type='text' id='i' value='0'>  <input type='text' id='b' value='30'> 
+<div id='results'></div>
+[/TEMPLATE_BASIC]

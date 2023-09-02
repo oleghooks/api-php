@@ -1,0 +1,85 @@
+[TEMPLATE_BASIC]
+<button onclick="barcodeAdd(4660019530545);">Тест</button>
+<table>
+<tr>
+	<td width=20>№</td>
+	<td style='width: 300px;'>Название</td>
+	<td width=30>Цена</td>
+	<td width=30>Кол.</td>
+	<td width=30>Сумма</td>	
+</tr>
+</table>
+[/TEMPLATE_BASIC]
+
+[TEMPLATE_PRODUCT]
+							
+<tr class='product' id='bar-{barcode}'>
+	<td></td> 
+	<td class='title'>{title}</td> 
+	<td><input type='text' id='price' onclick="if($(this).val() == '0') $(this).val('');" onfocus='if($(this).val() == "0") $(this).val("");' onkeyup='if(event.key == "Enter") $(this).blur(); if(event.key == "Enter") updatePriceBarcode("{barcode}"); summBarcodeUpdate("{barcode}");' onKeyPress='if (event.keyCode < 48 || event.keyCode > 57 || event.location != 3){ event.returnValue= false;}' value='{price}'></td> 
+	<td><input type='text' id='count' onkeyup='if(event.key == "Enter") $(this).blur();summBarcodeUpdate("{barcode}")'  onKeyPress='if (event.keyCode < 48 || event.keyCode > 57 || event.location != 3) event.returnValue= false;' value='1'></td>
+	<td id='summ'><span></span></td> 
+</tr>
+
+[/TEMPLATE_PRODUCT]
+[TEMPLATE_NO_PRODUCT]
+<tr class='product' id='bar-{barcode}'>
+<td></td> 
+<td><input type='text' onkeyup='if(event.key == "Enter") $(this).blur(); if(event.key == "Enter") insertBarcode("{barcode}");' style='width: 300px;' id='title'><a href='https://google.ru/search?q="{barcode}"' target='_blank'>Поиск</a></td> 
+</tr>
+
+
+[/TEMPLATE_NO_PRODUCT]
+
+[TEMPLATE_INFO]
+<head>
+<script src='/src/jquery-3.7.0.min.js' type='text/javascript'></script>
+
+<script type='text/javascript'>
+	$(document).ready(function(){
+		var textEnter = "";
+		var lastTimeStamp;
+		$('body').keypress(function(e){
+			//console.log(e);
+			var key = e.originalEvent.key;
+			var timeStamp = e.timeStamp;
+				if(textEnter == ""){
+					textEnter = key;
+					lastTimeStamp = timeStamp;
+				}
+				else if((timeStamp - lastTimeStamp) < 15){
+					if(key != "Enter"){
+						//console.log(textEnter);
+						textEnter = textEnter + key;
+						lastTimeStamp = timeStamp;
+					}
+					else
+						barcodeAdd(textEnter);
+				}
+				else{
+					textEnter = key;
+					lastTimeStamp = timeStamp;
+				}
+		});
+	});
+	
+	function barcodeAdd(barcode){
+		
+			$.ajax({
+				url: '/index.php?module=monitor&a=info&barcode='+barcode,
+				success: function(response){
+					$('#response').html(response);
+				}
+			});
+	}
+</script>
+<div id='response'></div>
+[/TEMPLATE_INFO]
+[TEMPLATE_INFO_PRODUCT]
+Название: {title}<br />
+Текущая цена: {price} <br />
+Цена поставщиков: <br /> {prices} <br />
+[/TEMPLATE_INFO_PRODUCT]
+
+
+

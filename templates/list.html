@@ -1,0 +1,24 @@
+[TEMPLATE_BASIC]
+<div class='rightSide'></div>
+<div class='leftSide'>
+  {list}
+</div>
+[/TEMPLATE_BASIC]
+[TEMPLATE_LIST_ITEM]
+<div class='leftSideItem [IF is_item_ok == 1]leftSideItemOk[/IF]'>
+  <div class='leftSideItemTitle'><span class='tel'>{tel}</span>{title}<span class='status {status_class}'>{status_name}</span></div>
+  <div class='leftSideItemDesc'><span>Срок <b>{days}</b></span>{desc}</div>
+</div>
+[/TEMPLATE_LIST_ITEM]
+[TEMPLATE_LIST_ITEM_FIRMS]
+<div class='leftSideItem'>
+  <div class='leftSideItemTitle'>{title}</div>
+  <div class='leftSideItemDesc'><span class='status {status_class}'>{status_name}</span></div>
+</div>
+[/TEMPLATE_LIST_ITEM_FIRMS]
+[TEMPLATE_INFO_FIRM]
+<div class='infoFirm'>
+	<div class='infoFirmTitle'>{title}</div>
+	<div class='infoFirmDesc'>{desc}</div>
+</div>
+[/TEMPLATE_INFO_FIRM]
