@@ -24,7 +24,8 @@ abstract class AbstractController
     {
         $this->request = Router::router()->getRequest();
         $this->response =  new Response($this->request);
-        $this->db = new DbController('mysql', '127.0.0.1', 'root', '', 'vesna', 'utf8', '');
+        $this->db = new DbController('mysql', '192.168.0.10', 'vesna', 'vesna', 'vesna', 'utf8', '');
+        //$this->db = new DbController('mysql', '127.0.0.1', 'root', '', 'vesna', 'utf8', '');
     }
 
     public function renderTemplate($template) {
