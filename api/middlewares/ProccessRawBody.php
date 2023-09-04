@@ -13,11 +13,10 @@ class ProccessRawBody implements IMiddleware
      */
     public function handle(Request $request): void
     {
-        $rawBody = file_get_contents('php://input');
-
+        $rawBody = $_POST;
         if ($rawBody) {
             try {
-             $body = json_decode($rawBody, true);
+             $body = $rawBody;
              foreach ($body as $key => $value) {
                  $request->$key = $value;
              }

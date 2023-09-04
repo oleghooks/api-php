@@ -26,6 +26,19 @@ $(document).ready(function(){
     });
 });
 
+
+/*
+function templateReturn(template, template_var, data){
+    $.ajax({
+        url: '/template/'+template+'/'+template_var,
+        type: 'POST',
+        data: data,
+        success: function(response){
+            return response;
+        }
+    });
+}*/
+
 function barcodeAdd(barcode){
 
     if($('#bar-'+barcode).length > 0){
@@ -36,11 +49,21 @@ function barcodeAdd(barcode){
         $.ajax({
             url: '/api/v1/monitor/infoBarcode/'+barcode,
             success: function(response){
-                $('table').append(response);
-                if($(response).find('#price').val() == "0")
-                    $('#bar-'+barcode+' #price').focus();
-                updateCount();
-                summBarcodeUpdate(barcode);
+               // console.log('sdsad');
+                console.log(response);
+                $.ajax({
+                    url: '/template/monitor/PRODUCT',
+                    type: 'POST',
+                    data: response.body,
+                    success: function(response){
+                        $('table').append(response);
+                        if($(response).find('#price').val() == "0")
+                            $('#bar-'+barcode+' #price').focus();
+                        updateCount();
+                        summBarcodeUpdate(barcode);
+                    }
+                });
+
             }
         });
     }

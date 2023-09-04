@@ -27,6 +27,7 @@ Router::group([
 ], function () {
     Router::post('/auth/sign-in', 'AuthController@signin');
     Router::get('/project', 'ProjectController@index');
+    Router::post('/menu', 'MenuController@index');
     Router::get('/monitor/infoBarcode/{barcode}', 'MonitorController@infoBarcode');
     Router::group([
         'middleware' => [

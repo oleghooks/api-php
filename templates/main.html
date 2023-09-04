@@ -5,10 +5,28 @@
 	<link rel='stylesheet' type='text/css' href='/src/css/{page}.css'>
 	<script type='text/javascript' src="/src/jquery-3.6.0.min.js"></script>
 	<script type='text/javascript' src="/src/scripts.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				url: '/api/v1/menu',
+				type: 'POST',
+				data: 'page={page}',
+				success: function(response){
+					console.log(response);
+				}
+			});
+		});
+	</script>
 	<script type='text/javascript' src="/src/load/{page}.js"></script>
 </head>
 <body>
 	<header>
+		<ul class="menu">
+			<li>Заявки</li>
+			<li>Касса</li>
+			<li>Картриджи</li>
+			<li>Счета</li>
+		</ul>
 		<span class='title'>Компьютер+</span><span active>Заявки</span>
 	</header>
 	<content>{main}</content>

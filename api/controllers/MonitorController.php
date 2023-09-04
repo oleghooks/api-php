@@ -9,14 +9,14 @@ class MonitorController extends AbstractController
         $info = $this->db->query("SELECT price,title,barcode FROM products WHERE barcode = ? LIMIT 0,1", [$barcode]);
         if($info)
             return $this->response->json([
-                [
+
                     'response' => 'OK',
                     'body' => [
                         'title' => $info[0]['title'],
                         'price' => $info[0]['price'],
                         'barcode' => $barcode
                     ]
-                ]
+
 
             ]);
         else

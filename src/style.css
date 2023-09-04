@@ -28,6 +28,20 @@ header span.title{
   background: #24649b;
   color: white;
 }
+header ul {
+  margin: 6px; /* Обнуляем значение отступов */
+  padding: 4px; /* Значение полей */
+  float: right;
+}
+header ul li {
+  display: inline;
+  margin-right: 5px;
+  color: white;
+  background: #ffffff5c;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
 .rightSide{
   width: calc(46% - 1px);
   float: right;
