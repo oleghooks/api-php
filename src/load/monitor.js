@@ -51,18 +51,28 @@ function barcodeAdd(barcode){
             success: function(response){
                // console.log('sdsad');
                 console.log(response);
-                $.ajax({
-                    url: '/template/monitor/PRODUCT',
-                    type: 'POST',
-                    data: response.body,
-                    success: function(response){
-                        $('table').append(response);
-                        if($(response).find('#price').val() == "0")
-                            $('#bar-'+barcode+' #price').focus();
-                        updateCount();
-                        summBarcodeUpdate(barcode);
-                    }
-                });
+                if(response.response == 'fail')
+                    $.ajax({
+                        url: '/template/monitor/NO_PRODUCT',
+                        type: 'POST',
+                        data: {barcode: barcode},
+                        success: function(response){
+                            $('table').append(response);
+                        }
+                    });
+                else
+                    $.ajax({
+                        url: '/template/monitor/PRODUCT',
+                        type: 'POST',
+                        data: response.body,
+                        success: function(response){
+                            $('table').append(response);
+                            if($(response).find('#price').val() == "0")
+                                $('#bar-'+barcode+' #price').focus();
+                            updateCount();
+                            summBarcodeUpdate(barcode);
+                        }
+                    });
 
             }
         });
@@ -76,7 +86,7 @@ function updateCount(){
 function insertBarcode(barcode){
     var title = $('#bar-'+barcode+' #title').val();
     $.ajax({
-        url: '/index.php?module=monitor&a=insert_barcode',
+        url: '/api/v1/monitor/insertBarcode',
         method: 'POST',
         data: {barcode: barcode, title: title},
         success: function(response){
@@ -98,7 +108,7 @@ function summBarcodeUpdate(barcode){
 function updatePriceBarcode(barcode){
     var priceBar = Number($('#bar-'+barcode+' #price').val());
     $.ajax({
-        url: '/index.php?module=monitor&a=update_price',
+        url: '/api/v1/monitor/updatePriceBarcode',
         method: 'POST',
         data: {price: priceBar, barcode: barcode}
     });

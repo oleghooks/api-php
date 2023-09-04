@@ -29,6 +29,8 @@ Router::group([
     Router::get('/project', 'ProjectController@index');
     Router::post('/menu', 'MenuController@index');
     Router::get('/monitor/infoBarcode/{barcode}', 'MonitorController@infoBarcode');
+    Router::post('/monitor/insertBarcode', 'MonitorController@insertBarcode');
+    Router::post('/monitor/updatePriceBarcode', 'MonitorController@updatePriceBarcode');
     Router::group([
         'middleware' => [
             Authenticate::class
